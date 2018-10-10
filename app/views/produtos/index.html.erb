@@ -1,0 +1,91 @@
+<section class="about text-center" id="about">
+      <div class="container">
+        <div class="row">
+          <br>
+          <br>
+          <br>
+          <h2>Produtos</h2>
+
+            <div class="single-about-detail clearfix">
+              <div class="about-img"> <br>
+              </div>
+              <div class="about-details">
+                <div class="pentagon-text">
+                  <h1></h1>
+                </div>
+
+                <p style="width: 294px;">
+
+                  <p id="notice"><%= notice %></p>
+
+
+
+                  <table border="1"; align=center>
+                    <thead>
+                      <tr>
+
+                        <th>User</th>
+                        <th>Id</th>
+                        <th>Data</th>
+                        <th>Objeto</th>
+                        <th>Cpu</th>
+                        <th>Hd</th>
+                        <th>Memoria</th>
+                        <th>Obs</th>
+                        <th>Valor</th>
+                        <th colspan="3"></th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+
+                      <% @produtos.each do |produto| %>
+                        <tr>
+                          <% if produto.user_id == current_user.id || current_user.admin === true %>
+                          <td><%= produto.user.nome %></td>
+                          <td><%= produto.id %></td>
+                          <td><%= produto.data %></td>
+                          <td><%= produto.objeto %></td>
+                          <td><%= produto.cpu %></td>
+                          <td><%= produto.hd %></td>
+                          <td><%= produto.memoria %></td>
+                          <td><%= produto.obs %></td>
+                          <td><%= produto.valor %></td>
+
+
+                          <td><%= link_to 'Mostrar', andamentos_path + "/" + produto.id.to_s %></td>
+
+
+                          <% if current_user.admin === true %>
+                          <td><%= link_to 'Edit', edit_produto_path(produto) %></td>
+                          <td><%= link_to 'Destroy', produto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                          <% end %>
+
+
+                          <% end %>
+
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+
+                  <br>
+                  <% if current_user.admin === true %>
+                    <%= link_to 'New Produto', new_produto_path %>
+                  <% end %>
+
+
+
+
+
+
+
+                </p>
+
+            </div>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </section>

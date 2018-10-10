@@ -1,0 +1,18 @@
+<%= simple_form_for(@produto) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :user, value_method: :id, label_method: :nome %>
+    <%= f.input :data %>
+    <%= f.input :objeto %>
+    <%= f.input :cpu %>
+    <%= f.input :hd %>
+    <%= f.input :memoria %>
+    <%= f.input :obs %>
+    <%= f.input :valor %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

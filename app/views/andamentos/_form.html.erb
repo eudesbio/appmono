@@ -1,0 +1,27 @@
+<%
+  @col_produtos = []
+  Produto.all.each do |produto|
+    if !Andamento.exists?(produto_id: produto.id)
+      @col_produtos << produto
+    end
+  end
+%>
+<%= simple_form_for(@andamento) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <% if action_name == "new" %>
+      <%= f.association :produto, :collection => @col_produtos, label_method: :id, value_method: :id %>
+    <% else %>
+      <%= f.association :produto, label_method: :id, value_method: :id %>
+    <% end %>
+    <%= f.input :analisado %>
+    <%= f.input :consertado  %>
+    <%= f.input :testado  %>
+    <%= f.input :entregue  %>
+    <%= f.input :data  %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

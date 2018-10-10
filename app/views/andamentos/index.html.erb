@@ -1,0 +1,74 @@
+<section class="about text-center" id="about">
+      <div class="container">
+        <div class="row">
+          <br>
+          <br>
+          <br>
+          <h2>Andamento</h2>
+            <div class="single-about-detail clearfix">
+              <div class="about-img"> <br>
+              </div>
+              <div class="about-details">
+                <div class="pentagon-text">
+                  <h1></h1>
+                </div>
+                <p style="width: 294px;">
+                <p id="notice"><%= notice %></p>
+
+
+
+
+
+                  <table border="1"; align=center>
+                    <thead>
+                      <tr>
+                        <th>Produto</th>
+                        <th>Analisado</th>
+                        <th>Consertado</th>
+                        <th>Testado</th>
+                        <th>Entregue</th>
+                        <th>Data</th>
+                        <th colspan="3"></th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <% @andamentos.each do |andamento| %>
+                        <tr>
+                          <td><%= andamento.produto_id %></td>
+                          <td><%= andamento.analisado %></td>
+                          <td><%= andamento.consertado %></td>
+                          <td><%= andamento.testado %></td>
+                          <td><%= andamento.entregue %></td>
+                          <td><%= andamento.data %></td>
+                          <td><%= link_to 'Mostrar', andamento %></td>
+
+                          <% if current_user.admin === true %>
+                          <td><%= link_to 'Edit', edit_andamento_path(andamento) %></td>
+                          <td><%= link_to 'Destroy', andamento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                          <% end %>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                  <br>
+                  <% if current_user.admin === true %>
+                  <%= link_to 'New Andamento', new_andamento_path %>
+                  <% end %>
+
+
+
+
+
+
+
+
+                </p>
+
+            </div>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </section>

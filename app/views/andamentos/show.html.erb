@@ -1,0 +1,73 @@
+<section class="about text-center" id="about">
+      <div class="container">
+        <div class="row">
+          <br>
+          <br>
+          <br>
+          <h2>Andamento</h2>
+            <div class="single-about-detail clearfix">
+              <div class="about-img"> <br>
+              </div>
+              <div class="about-details">
+                <div class="pentagon-text">
+                </div>
+                <p style="width: 294px;">
+
+
+
+
+                <p id="notice"><%= notice %></p>
+
+                  <p>
+                    <h1>
+                  <strong>Produto:</strong>
+                  <%= @andamento.produto_id %>
+                    </h1>
+                </p>
+
+
+                  <strong>Analisado:</strong>
+                  <%= @andamento.analisado %>
+
+
+
+                  <strong>Consertado:</strong>
+                  <%= @andamento.consertado %>
+
+
+                  <strong>Testado:</strong>
+                  <%= @andamento.testado %>
+
+
+
+                  <strong>Entregue:</strong>
+                  <%= @andamento.entregue %>
+
+
+
+                  <strong>Data:</strong>
+                  <%= @andamento.data %>
+
+
+                <%= link_to 'Edit', edit_andamento_path(@andamento) %> |
+                <%= link_to 'Voltar', andamentos_path %>
+
+
+
+
+
+
+
+
+
+
+
+                </p>
+
+            </div>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </section>

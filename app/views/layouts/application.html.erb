@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+
+
+<html lang=”pt-br>
+  <head>
+
+    <!-- Código meu -->
+    <meta charset="utf-8">
+
+
+
+<!--
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style type="text/css">.tk-proxima-nova{font-family:"proxima-nova",sans-serif;}</style>
+    <script src="javascripts/bootstrap.min.js"></script>
+    <script src="javascripts/custom.js"></script>
+    <script src="javascripts/gmaps.js"></script>
+    <script src="javascripts/jquery-2.1.1.js"></script>
+    <script src="javascripts/smoothscroll.js"></script>
+
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+
+
+-->
+
+
+
+
+
+
+
+
+    <title>TecnoInfo</title>
+
+
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+
+  <body>
+
+
+    <!-- ============
+    header section -->
+
+    <header class="top-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-5 header-logo">
+
+            <br>
+
+            <a href="/"><img src="<%= image_path('logo.png') %>" alt="" class="img-responsive logo"></a>
+          </div>
+
+
+          <div class="col-md-7">
+            <nav class="navbar navbar-default">
+              <div class="container-fluid nav-bar">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a class="menu active" href="/">Home</a></li>
+                    <li><a class="menu" href="/#about">Sobre</a></li>
+                    <li><a class="menu" href="/#service">Serviços</a></li>
+                    <li><a class="menu" href="/produtos">Produto</a></li>
+                    <li><a class="menu" href="/andamentos">Andamento</a></li>
+
+                    <% if user_signed_in? %>
+                        <%= link_to "Sair   /", destroy_user_session_path, method: :delete %>
+                        Logado como: <strong><%= current_user.email %></strong>
+
+                    <%else%>
+                    <%= link_to "Cadastrar-se", new_user_registration_path, :class => 'navbar-link'  %> |
+                    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+                    <%end%>
+
+
+
+
+
+
+                  </ul>
+
+                </div><!-- /navbar-collapse -->
+              </div><!-- / .container-fluid -->
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header> <!-- end of header area -->
+
+
+
+
+
+
+
+<p class="navbar-text pull-right">
+<% if user_signed_in? %>
+  Logged in as <strong><%= current_user.email %></strong>.
+  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+<% end %>
+    <%= yield %>
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
+
+
+<!-- footer starts here -->
+<footer class="footer clearfix">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6 footer-para">
+        <p>&copy; <a href="https://www.freshdesignweb.com">tecnoinfo.com</a> All right reserved</p>
+      </div>
+
+      <div class="col-xs-6 text-right">
+        <a href=""><i class="fa fa-facebook"></i></a>
+        <a href=""><i class="fa fa-twitter"></i></a>
+        <a href=""><i class="fa fa-skype"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>
